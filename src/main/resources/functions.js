@@ -37,3 +37,27 @@ function id(person) {
 function process(v) {
 	v.c = v.a + v.b ;
 }
+
+/*
+ * KPI calculation simulation
+ */
+function process2(v) {
+	v.c = v.a + v.b ;
+}
+
+/*
+ * KPI calculation simulation
+ */
+function calc(data) {
+	// Compute missing KPI 
+	cafvd = ( data.QTE * data.PPHT ) + data.LPC ;
+	cafdp = data.CAFDF + data.CAFDRE ;
+	rca = cafdp + data.CAFDRE ;
+	cafa = cafdp + cafvd ;
+	
+	// Set computed KPI values 
+	data.CAFVD = cafvd ;
+	data.CAFDP = cafdp ;
+	data.RCA = rca ;
+	data.CAFA = cafa ;
+}

@@ -1,7 +1,11 @@
 package lgulab.ecmascript;
 
+import java.util.Map;
+
+import lgulab.beans.KPI;
 import lgulab.beans.Person;
 import lgulab.beans.Values;
+import lgulab.beans.Values2;
 import lgulab.scripting.ScriptFunctions;
 import lgulab.scripting.Util;
 
@@ -44,5 +48,19 @@ public class JavascriptFunctions extends ScriptFunctions {
 	public void process(Values values) throws Exception {
 		Object[] args = {values};
 		invokeFunction( "process", args);
+	}
+
+	public void process2(Values2 values) throws Exception {
+		Object[] args = {values};
+		invokeFunction( "process2", args);
+	}
+	
+	public void calc(KPI kpi) throws Exception {
+		Object[] args = {kpi};
+		invokeFunction( "calc", args);
+	}
+	public void calc(Map<String,Double> map) throws Exception {
+		Object[] args = {map};
+		invokeFunction( "calc", args);
 	}
 }
