@@ -1,0 +1,19 @@
+
+With Java JRE 1.8.0 ( whatever the compilation 1.7, 1.6, etc) :
+
+	Script Engine: Oracle Nashorn (1.8.0_66)
+	Engine supports the following extensions:
+		js
+	Engine has the following short names:
+		nashorn
+		Nashorn
+		js
+		JS
+		JavaScript
+		javascript
+		ECMAScript
+		ecmascript
+	Language: ECMAScript (ECMA - 262 Edition 5.1)
+
+---------------------------------------------------------------------
+
