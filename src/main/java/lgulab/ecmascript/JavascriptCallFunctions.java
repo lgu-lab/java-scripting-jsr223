@@ -1,10 +1,10 @@
 package lgulab.ecmascript;
 
-public class EvalJavascriptCallFunctions {
+public class JavascriptCallFunctions {
 	
 	public static void main(String[] args) throws Exception {
 		
-		MyFunctions myFunctions = new MyFunctions();
+		JavascriptFunctions myFunctions = new JavascriptFunctions();
 		
 		System.out.println("add(2,3)        : " + myFunctions.add(2, 3) );
 		System.out.println("add(2.5, 7.123) : " + myFunctions.add(2.5, 7.123) );

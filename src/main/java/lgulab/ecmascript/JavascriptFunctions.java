@@ -3,9 +3,9 @@ package lgulab.ecmascript;
 import lgulab.scripting.ScriptFunctions;
 import lgulab.scripting.Util;
 
-public class MyFunctions extends ScriptFunctions {
+public class JavascriptFunctions extends ScriptFunctions {
 
-	public MyFunctions() throws Exception {
+	public JavascriptFunctions() throws Exception {
 		super(Util.getResourceFile("functions.js"), "javascript");
 	}
 	

@@ -4,7 +4,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-public class EvalJavascriptInMemory {
+public class JavascriptInMemory {
 	
 	private final static String ENGINE_NAME = "javascript";
 //	private final static String ENGINE_NAME = "ecmascript";

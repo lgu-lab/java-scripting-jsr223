@@ -1,15 +1,16 @@
-package lgulab.ecmascript;
+package lgulab.python;
 
-public class JavascriptBenchmark1 {
+public class PythonBenchmark1 {
 	
 	public static void main(String[] args) throws Exception {
 		
-		JavascriptFunctions myFunctions = new JavascriptFunctions();
+		PythonFunctions myFunctions = new PythonFunctions();
 		
 		System.out.println("Starting... ");
-    	long startTime  = System.currentTimeMillis();
+    	
+		long startTime  = System.currentTimeMillis();
     	System.out.println("startTime : " + startTime ); 	
-		int n ; 
+    	int n ;
 		for ( n = 0 ; n < 1000000 ; n++ ) {
 			double r = myFunctions.add(n, 123.45);
 			double m = myFunctions.modulo10(n);
@@ -24,6 +25,6 @@ public class JavascriptBenchmark1 {
     	System.out.println("endTime : " + endTime ); 	
     	long duration = (endTime - startTime) ;
     	System.out.println("duration : " + duration / 1000 + " seconds  (" + duration + " ms)"); 	
-		
+
 	}
 }
