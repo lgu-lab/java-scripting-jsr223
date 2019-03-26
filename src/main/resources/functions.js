@@ -30,3 +30,10 @@ function isOK(s) {
 function id(person) {
 	return person.id;
 }
+
+/*
+ * KPI calculation simulation
+ */
+function process(v) {
+	v.c = v.a + v.b ;
+}

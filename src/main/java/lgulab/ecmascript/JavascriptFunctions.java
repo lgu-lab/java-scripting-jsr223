@@ -1,6 +1,7 @@
 package lgulab.ecmascript;
 
 import lgulab.beans.Person;
+import lgulab.beans.Values;
 import lgulab.scripting.ScriptFunctions;
 import lgulab.scripting.Util;
 
@@ -39,5 +40,9 @@ public class JavascriptFunctions extends ScriptFunctions {
 		// Result is 'java.lang.Integer' (the original Java type in the Person class)
 		return (int)result;
 	}
-
+	
+	public void process(Values values) throws Exception {
+		Object[] args = {values};
+		invokeFunction( "process", args);
+	}
 }
