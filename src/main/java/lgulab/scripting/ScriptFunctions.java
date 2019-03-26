@@ -4,14 +4,18 @@ import java.io.File;
 
 import javax.script.ScriptEngine;
 
-public class ScriptFunctions {
+/**
+ * Abstract class for script functions invocation 
+ * 
+ * @author lgu
+ *
+ */
+public abstract class ScriptFunctions {
 
 	private final ScriptEngine scriptEngine ;
 
 	protected ScriptFunctions(File file, String languageName) throws Exception  {
 		super();
-//		ScriptEngineManager factory = new ScriptEngineManager();
-//		this.scriptEngine = factory.getEngineByName("javascript");
 		this.scriptEngine = Util.evalFile(languageName, file);
 	}
 	
@@ -19,13 +23,4 @@ public class ScriptFunctions {
 		return Util.invokeFunction(scriptEngine, functionName, args);
 	}
 
-//	public String getEntityName(String tableName) throws Exception {
-//		Object[] args = {tableName};
-//		return (String) Util.invokeFunction(scriptEngine, "getEntityName", args);
-//	}
-//
-//	public boolean isOK(String tableName) throws Exception {
-//		Object[] args = {tableName};
-//		return (Boolean) Util.invokeFunction(scriptEngine, "isOK", args);
-//	}
 }

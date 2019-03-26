@@ -1,0 +1,7 @@
+
+
+  https://docs.oracle.com/javase/7/docs/technotes/guides/scripting/programmer_guide/
+  
+  https://www.jmdoudoux.fr/java/dej/chap-scripting.htm 
+  
+  

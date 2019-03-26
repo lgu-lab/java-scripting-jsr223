@@ -2,6 +2,8 @@ package lgulab.scripting;
 
 import java.util.List;
 
+import javax.script.Compilable;
+import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -13,8 +15,8 @@ public class Engines {
 	}
 	
 	public static void printAvailableEngines() throws ScriptException {
-		ScriptEngineManager mgr = new ScriptEngineManager();
-        List<ScriptEngineFactory> factories = mgr.getEngineFactories();
+		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+        List<ScriptEngineFactory> factories = scriptEngineManager.getEngineFactories();
 
         for (ScriptEngineFactory factory : factories) {
 
@@ -42,6 +44,14 @@ public class Engines {
                     System.out.println("\t\t" + n);
                 }
             }
+    		ScriptEngine scriptEngine = scriptEngineManager.getEngineByName(factory.getNames().get(0));	
+    		if ( scriptEngine instanceof Compilable ) {
+                System.out.printf("\tScript Engine is compilable \n" );
+    		}
+    		else {
+                System.out.printf("\tScript Engine is NOT compilable \n" );
+    		}
+
         }
 	}
 

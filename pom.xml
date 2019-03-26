@@ -5,26 +5,22 @@
   <version>0.0.1-SNAPSHOT</version>
 
 	<dependencies>
-<!-- 		<dependency>
-			<groupId>org.python</groupId>
-			<artifactId>jython-standalone</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-		
- -->		
-<!--  		<dependency>
-			<groupId>org.python</groupId>
-			<artifactId>jython</artifactId>
-			<version>2.7.0</version>
-		</dependency>
- -->		
- 		<!-- Python 2.5 -->
+ 		<!-- Python 2.5 : Tests OK -->
 		<dependency>
 			<groupId>org.python</groupId>
 			<artifactId>jython</artifactId>
 			<version>2.5.3</version>
 		</dependency>
 		
+ 		<!-- Python 2.7 : console: Failed to install '': java.nio.charset.UnsupportedCharsetException: cp0. -->
+ 		<!-- 
+		<dependency>
+			<groupId>org.python</groupId>
+			<artifactId>jython</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+ 		 -->
+
 	</dependencies>
 
 

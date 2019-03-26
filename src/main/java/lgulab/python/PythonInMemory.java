@@ -31,25 +31,21 @@ public class PythonInMemory {
 	 * @param scriptEngine
 	 * @throws ScriptException
 	 */
-	public static void eval(ScriptEngine scriptEngine) throws ScriptException {
+	public static void basicEval(ScriptEngine scriptEngine) throws ScriptException {
 		
-		// Get current month as Java object 
-		Double month = (Double) scriptEngine.eval("var date=new Date(); date.getMonth();"); 
-		System.out.println("month = " + month );
+		scriptEngine.eval("import sys");
+		scriptEngine.eval("print 'hello'");
 		
-		// Get "s1 + ' world'" as Java object --> "Hello world"
-		String s = (String) scriptEngine.eval("var s1 = 'Hello'; s1 + ' world';"); 
-		System.out.println("s = " + s );
+		scriptEngine.put("a", 42);
+		scriptEngine.eval("print a");
 		
-		// Get function result
-		int i = (Integer) scriptEngine.eval("function myFunction() { return 123; }; myFunction();"); 
-		System.out.println("i = " + i );
+		scriptEngine.eval("x = 2 + 2");
+		scriptEngine.eval("print x");
+        
+        System.out.println("[Java] a = " + scriptEngine.get("a") );
+        System.out.println("[Java] x = " + scriptEngine.get("x") );
 		
-		// Get nothing
-		String r = (String) scriptEngine.eval("");  // Result is null
-		System.out.println("r = " + r );
-		r = (String) scriptEngine.eval("// nothing to do ");  // Result is null
-		System.out.println("r = " + r );
+		System.out.println("[Java] End.");
 	}
 	
 	public static void variablesSharing1(ScriptEngine scriptEngine) throws Exception {
