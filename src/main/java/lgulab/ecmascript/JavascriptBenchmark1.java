@@ -12,7 +12,7 @@ public class JavascriptBenchmark1 {
 		int n ; 
 		for ( n = 0 ; n < 1000000 ; n++ ) {
 			double r = myFunctions.add(n, 123.45);
-			double m = myFunctions.modulo10(n);
+			int    m = myFunctions.modulo10(n);
 			
 			if ( n % 10000 == 0 ) {
 				System.out.println("work in progress : n = " + n + " r : " + r + " m = " + m);
