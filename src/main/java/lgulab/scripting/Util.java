@@ -34,9 +34,15 @@ public class Util {
 		return file ;
 	}
 	
-	public static ScriptEngine evalFile(String languageName, File file) throws Exception {
+	public static ScriptEngine getScriptEngine(String languageName)  {
 		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
-		ScriptEngine scriptEngine = scriptEngineManager.getEngineByName(languageName);	
+		return scriptEngineManager.getEngineByName(languageName);	
+	}
+
+	public static ScriptEngine evalFile(String languageName, File file) throws Exception {
+//		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+//		ScriptEngine scriptEngine = scriptEngineManager.getEngineByName(languageName);	
+		ScriptEngine scriptEngine = getScriptEngine(languageName) ;
 		evalFile(scriptEngine, file);
 		return scriptEngine ;
 	}
