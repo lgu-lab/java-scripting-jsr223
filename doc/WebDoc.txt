@@ -5,3 +5,9 @@
   https://www.jmdoudoux.fr/java/dej/chap-scripting.htm 
   
   
+  Multi-threading :
+  
+  https://stackoverflow.com/questions/30140103/should-i-use-a-separate-scriptengine-and-compiledscript-instances-per-each-threa 
+  You can share a ScriptEngine and CompiledScript objects across threads. They are threadsafe. 
+  ??????
+  

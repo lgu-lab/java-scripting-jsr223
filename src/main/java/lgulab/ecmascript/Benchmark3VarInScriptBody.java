@@ -4,13 +4,12 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import javax.script.Bindings;
-import javax.script.Compilable;
 import javax.script.CompiledScript;
 import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import lgulab.scripting.Util;
+import lgulab.scripting.ScriptExecutor;
 
 /**
  * Benchmark with a single reusable map
@@ -34,8 +33,6 @@ public class Benchmark3VarInScriptBody {
 	
 	public static void main(String[] args) throws Exception {
 		
-		ScriptEngine scriptEngine = Util.getScriptEngine("javascript");
-		
 		String script = "" 
 				+ ""
 				+ "// Compute missing KPI  \n"
@@ -46,8 +43,11 @@ public class Benchmark3VarInScriptBody {
 				+ "// CAFA = 'AAAAA' ; \n"					
 				;
 		
-		Compilable compilable = (Compilable) scriptEngine;
-		CompiledScript compiledScript =  compilable.compile(script);
+//		ScriptEngine scriptEngine = Util.getScriptEngine("javascript");
+//		
+//		Compilable compilable = (Compilable) scriptEngine;
+//		CompiledScript compiledScript =  compilable.compile(script);
+		ScriptExecutor scripExecutor = new ScriptExecutor(script);
 
 		System.out.println("Starting... ");
     	long startTime  = System.currentTimeMillis();
@@ -64,7 +64,8 @@ public class Benchmark3VarInScriptBody {
 			
 			//executeScript(scriptEngine, script, map);
 			//Map<String,Object> map = executeCompiledScript2(compiledScript, n);
-			executeCompiledScript(compiledScript, map);
+			//executeCompiledScript(compiledScript, map);
+			scripExecutor.execute(map);
 			
 			if ( n % 100000 == 0 ) {
 				System.out.println("work in progress : n = " + n + " map = " + map );
@@ -80,41 +81,41 @@ public class Benchmark3VarInScriptBody {
 		
 	}
 	
-	public static void executeScript(ScriptEngine scriptEngine, String script, Map<String,Object> map) throws ScriptException {
-		
-		// Put variables in JS engine context ( map --> context )
-		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
-			scriptEngine.put(entry.getKey(), entry.getValue());			
-		}
+//	public static void executeScript(ScriptEngine scriptEngine, String script, Map<String,Object> map) throws ScriptException {
+//		
+//		// Put variables in JS engine context ( map --> context )
+//		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
+//			scriptEngine.put(entry.getKey(), entry.getValue());			
+//		}
+//
+//		// Run evaluation 
+//		scriptEngine.eval(script); 
+//
+//		// Get variables from JS engine context  ( context --> map )
+//		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
+//			entry.setValue(scriptEngine.get(entry.getKey()));
+//		}
+//	}
 
-		// Run evaluation 
-		scriptEngine.eval(script); 
-
-		// Get variables from JS engine context  ( context --> map )
-		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
-			entry.setValue(scriptEngine.get(entry.getKey()));
-		}
-	}
-
-	public static void executeCompiledScript(CompiledScript compiledScript, Map<String,Object> map) throws ScriptException {
-		
-		ScriptEngine scriptEngine = compiledScript.getEngine();
-		
-		// Put variables in JS engine context ( map --> context )
-		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
-			scriptEngine.put(entry.getKey(), entry.getValue());			
-		}
-		
-		// Run evaluation 
-		//scriptEngine.eval(script); 
-		compiledScript.eval(); 
-
-		// Get variables from JS engine context  ( context --> map )
-		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
-			entry.setValue(scriptEngine.get(entry.getKey()));
-		}
-		//return map;
-	}
+//	public static void executeCompiledScript(CompiledScript compiledScript, Map<String,Object> map) throws ScriptException {
+//		
+//		ScriptEngine scriptEngine = compiledScript.getEngine();
+//		
+//		// Put variables in JS engine context ( map --> context )
+//		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
+//			scriptEngine.put(entry.getKey(), entry.getValue());			
+//		}
+//		
+//		// Run evaluation 
+//		//scriptEngine.eval(script); 
+//		compiledScript.eval(); 
+//
+//		// Get variables from JS engine context  ( context --> map )
+//		for ( Map.Entry<String,Object> entry : map.entrySet() ) {
+//			entry.setValue(scriptEngine.get(entry.getKey()));
+//		}
+//		//return map;
+//	}
 
 	public static Map<String,Object> executeCompiledScript2(CompiledScript compiledScript, int n) throws ScriptException {
 		
