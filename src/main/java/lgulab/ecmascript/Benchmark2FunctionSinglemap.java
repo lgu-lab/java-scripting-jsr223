@@ -3,7 +3,22 @@ package lgulab.ecmascript;
 import java.util.Hashtable;
 import java.util.Map;
 
-public class JavascriptBenchmark2 {
+/**
+ * Benchmark based on function call 
+ * Values are passed as function argument (in a map)
+ * Very fast (no mapping with engine context)  
+ * 
+ * Version with a unique map reused for each call
+ * 
+ * 953 ms
+ * 968 ms
+ * 984 ms
+ * 969 ms
+ * 
+ * @author l.guerin
+ *
+ */
+public class Benchmark2FunctionSinglemap {
 	
 	private final static Map<String,Double> STATIC_MAP = new Hashtable<>();
 	
@@ -15,20 +30,17 @@ public class JavascriptBenchmark2 {
     	long startTime  = System.currentTimeMillis();
     	System.out.println("startTime : " + startTime ); 	
 		int n ; 
-		for ( n = 0 ; n < 1000000 ; n++ ) {
-			
-			//--- New Map for each iteration : 1053/1145 ms
-//			Map<String,Double> map = buildMap(n);
+		for ( n = 0 ; n < BenchmarkConst.NUMBER_OF_ITERATIONS ; n++ ) {
 			
 			//--- Always the same Map for each iteration : 916/957 ms
-			initMap(STATIC_MAP, n) ;
 			Map<String,Double> map = STATIC_MAP ;
+			initMap(STATIC_MAP, n) ;
 			
 			myFunctions.calc(map);
 			
-//			if ( n % 100000 == 0 ) {
-//				System.out.println("work in progress : n = " + n + " map = " + map );
-//			}
+			if ( n % 100000 == 0 ) {
+				System.out.println("work in progress : n = " + n + " map = " + map );
+			}
 		}
     	long endTime  = System.currentTimeMillis();
 		System.out.println("Done. n = " + n);
@@ -39,20 +51,6 @@ public class JavascriptBenchmark2 {
 		
 	}
 	
-	public static Map<String,Double> buildMap(int n) {
-//		int v = n % 100 ;
-		Map<String,Double> map = new Hashtable<>();
-//		map.put("CAFDO", (double)v ) ;
-//		map.put("CAFDR", 2.0 ) ;
-//		map.put("CAFDRE", (double)v + 3.5) ;
-//		map.put("CAFDF", 4.0 );
-//		map.put("QTE", 12.0 );
-//		map.put("PPHT", 18.75 );
-//		map.put("LPC", 3.0 );
-		initMap(map, n);
-		return map ;
-	}
-
 	public static void initMap(Map<String,Double> map, int n) {
 		for ( Map.Entry<String,Double> entry : map.entrySet() ) {
 			entry.setValue(0.0);

@@ -28,7 +28,7 @@ import lgulab.scripting.Util;
  * @author l.guerin
  *
  */
-public class JavascriptBenchmark3 {
+public class Benchmark3VarInScriptBody {
 	
 	private final static Map<String,Object> STATIC_MAP = new Hashtable<>();
 	
@@ -53,7 +53,7 @@ public class JavascriptBenchmark3 {
     	long startTime  = System.currentTimeMillis();
     	System.out.println("startTime : " + startTime ); 	
 		int n ; 
-		for ( n = 0 ; n < 1000000 ; n++ ) {
+		for ( n = 0 ; n < BenchmarkConst.NUMBER_OF_ITERATIONS ; n++ ) {
 			
 			//--- New Map for each iteration : 1053/1145 ms
 //			Map<String,Double> map = buildMap(n);
